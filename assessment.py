@@ -78,30 +78,95 @@ print shipping_cost("apple")
 
 def is_hometown(town_name):
     """
+    Evaluate provided town name.  Return true if it is my hometown.
+    """
+    if town_name == "Baton Rouge":
+        return True
+    else:
+        return False
+
+# Checking the function.
+print is_hometown("Baton Rouge")
+print is_hometown("Walnut Creek")
 
 
 #    (b) Write a function, `full_name()`, which takes a first and last name as
 #        arguments as strings and returns the concatenation of the two names in
 #        one string.
-#
+
+def full_name(first_name, last_name):
+    """
+    Return concatenation of two input strings.
+    """
+    return first_name + " " + last_name
+
+# Checking the function.
+print full_name("Charley", "McLean")
+print full_name("Alex", "McLean")
+
 #    (c) Write a function, `hometown_greeting()`, which takes a home town, a
 #        first name, and a last name as strings as arguments, calls both
 #        `is_hometown()` and `full_name()` and prints "Hi, 'full name here',
-#        we're from the same place!", or "Hi 'full name here', where are you 
+#        we're from the same place!", or "Hi 'full name here', where are you
 #        from?" depending on what `is_hometown()` evaluates to.
+
+def hometown_greeting(town_name, first_name, last_name):
+    """
+    Print a greeting.  Call is_hometown function and full_name function.
+    """
+    if is_hometown(town_name):
+        print "Hi, " + full_name(first_name, last_name) + ", we're from the same place!"
+    else:
+        print "Hi " + full_name(first_name, last_name) + ", where are you from?"
+
+# Checking the function.
+hometown_greeting("Sarnia", "Alex", "McLean")
+hometown_greeting("Baton Rouge", "Lynn", "Lalka") 
 
 #####################################################################
 
 # PART THREE
 
-# 1. Write a function ``increment()`` with a nested inner function, ``add()`` 
+# 1. Write a function ``increment()`` with a nested inner function, ``add()``
 #    inside of it. The outer function should take ``x``, an integer which
 #    defaults to 1. The inner function should take ``y`` and add ``x`` and ``y`` together.
+
+def increment(x = 1):
+    """
+    A function that takes a parameter, x, which defaults to 0 if no value
+    is provided.  This is passed to an inner function which takes a 
+    parameter, y.  The sum of x and y is returned.
+    """
+    def add(y):
+        return x + y
+    return add
+
+# Checking the function.
+add_ten = increment()
+print add_ten(10)
+
+add_twenty = increment(2)
+print add_twenty(20)
+
 
 # 2. Call the function ``increment()`` with x = 5. Assign what is returned to a variable name, addfive. Call 
 #    addfive with y = 5. Call again with y = 20.
 
+addfive = increment(5)
+print addfive(5)
+print addfive(20)
+
 # 3. Make a function that takes in a number and a list of numbers. It should append
 #    the number to the list of numbers and return the list.
+
+def append_number(number, list_of_numbers):
+    """
+    Append a number to a list.
+    """
+    list_of_numbers.append(number)
+    return list_of_numbers
+
+# Checking the function.
+print append_number(5, [1, 2, 3, 4])
 
 #####################################################################
